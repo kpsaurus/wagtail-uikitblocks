@@ -1,0 +1,43 @@
+{% extends "container.html" %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block grid %}
+
+<div class="uk-child-width-expand-1-1@s uk-child-width-1-{{grid_children_count_medium}}@m uk-child-width-1-{{grid_children_count_large}}@l uk-child-width-1-{{grid_children_count_extra_large}}@xl {% if value.grid_blocks|length == 1 %}uk-child-width-expand{% endif %} uk-text-center
+      {% for margin in self.margin %}
+        {% if margin.block_type == 'margin_top' %}uk-margin-{{margin.value}}-top
+        {% elif margin.block_type == 'margin_bottom' %}uk-margin-{{margin.value}}-bottom
+        {% elif margin.block_type == 'margin_left' %}uk-margin-{{margin.value}}-left
+        {% else %}uk-margin-{{margin.value}}-right
+        {% endif %}
+     {% endfor %}
+
+     {% for padding in self.padding %}
+        {% if padding.block_type == 'padding_top' %}uk-padding-{{padding.value}}-top
+        {% elif padding.block_type == 'padding_bottom' %}uk-padding-{{padding.value}}-bottom
+        {% elif padding.block_type == 'padding_left' %}uk-padding-{{padding.value}}-left
+        {% else %}uk-padding-{{padding.value}}-right
+        {% endif %}
+     {% endfor %}"
+     uk-grid>
+    {% for grid_block in value.grid_blocks %}
+    <div>
+
+        {% if self.wrap_grid %}
+        <div class="uk-card uk-card-default uk-card-body">
+            <div style="background-color: {{grid_block.background_color}}; background-image:url({{grid_block.background_image.file.url}})">
+                {{grid_block.uikit_block}}
+            </div>
+        </div>
+        {% else %}
+        <div style="background-color: {{grid_block.background_color}}; background-image:url({{grid_block.background_image.file.url}})">
+            {{grid_block.uikit_block}}
+        </div>
+        {%endif%}
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

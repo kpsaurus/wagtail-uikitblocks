@@ -1,0 +1,11 @@
+<ul class="uk-subnav uk-subnav-pill" uk-switcher>
+    {% for switcher_item in value.switcher_items %}
+    <li><a href="#">{{switcher_item.switcher_title}}</a></li>
+    {% endfor %}
+</ul>
+
+<ul class="uk-switcher uk-margin">
+    {% for switcher_item in value.switcher_items %}
+    <li>{{switcher_item.switcher_body}}</li>
+    {% endfor %}
+</ul>

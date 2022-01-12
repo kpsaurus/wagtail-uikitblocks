@@ -1,0 +1,33 @@
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% if title and image %}
+<a class="no-decoration" href="{{self.url}}">
+    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin uk-animation-scale-up"
+         uk-grid>
+
+        <div class="uk-card-media-left uk-cover-container">
+
+            {% if image %}
+            <img src="{{image}}" alt="" uk-cover>
+            {% else %}
+            <img src="{% static 'default_cover.jpg' %}" alt="" uk-cover>
+            {% endif %}
+
+            <canvas width="300" height="200"></canvas>
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">{{title}}</h3>
+                {% if desc %}
+                <p class="uk-article-meta">{{desc}}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</a>
+{% else %}
+
+<a href="{{self.url}}">{{self.url}}</a>
+
+{% endif %}

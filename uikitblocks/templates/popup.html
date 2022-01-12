@@ -1,0 +1,14 @@
+{% load wagtailcore_tags %}
+<!-- This is a button toggling the modal with the default.conf close button -->
+<button class="uk-button uk-button-default uk-margin-small-right" type="button"
+        uk-toggle="target: #modal-close-default">{{self.button_text}}
+</button>
+
+<!-- This is the modal with the default.conf close button -->
+<div id="modal-close-default" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <h2 class="uk-modal-title">{{self.popup_title}}</h2>
+        <p>{{self.popup_message|richtext|safe }}</p>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+env/*
+dist/*
+build/*
+wagtail_uikitblocks.egg-info/*
+*.pyc
+.vscode
+__pycache__
+*.DS_Store

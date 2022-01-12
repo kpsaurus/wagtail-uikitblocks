@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+<div class="uk-height-medium uk-background-cover uk-light"  style="height:100% !important;"
+     data-src="{{ self.banner_image.file.url }}" alt="{{ self.banner_image.title }}" uk-img>
+    <h1>{{ self.banner_title}} </h1>
+    <div>
+        {{ self.banner_content|richtext|safe }}
+    </div>
+</div>

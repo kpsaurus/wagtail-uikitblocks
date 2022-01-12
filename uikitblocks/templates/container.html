@@ -1,0 +1,9 @@
+{% if self.container %}
+<div class="uk-container uk-container-{{self.container}}">
+    {%endif%}
+    {% block grid %}
+    {% endblock grid %}
+    {% if self.container %}
+</div>
+{%endif%}
+

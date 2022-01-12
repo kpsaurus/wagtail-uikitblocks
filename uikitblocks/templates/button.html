@@ -1,0 +1,14 @@
+{% if self.link %}
+
+<a type="button" class="uk-button uk-button-{{self.priority}}" href="{{self.link}}">
+    {{self.text}}
+</a>
+
+{% else %}
+
+<button class="uk-button uk-button-{{self.priority}}">
+    {{self.text}}
+</button>
+
+{% endif %}
+

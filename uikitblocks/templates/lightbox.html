@@ -1,0 +1,10 @@
+<div class="uk-child-width-1-{{self.number_of_images}}@m" uk-grid
+     uk-lightbox="{% if self.animation %}animation: {{self.animation}};{% endif %}">
+    {% for image in value.image_items %}
+    <div>
+        <a class="uk-inline" href="{{ image.image.file.url }}" data-caption="{{image.image.title}}">
+            <img src="{{ image.image.file.url }}" alt="{{image.image.title}}">
+        </a>
+    </div>
+    {% endfor %}
+</div>
