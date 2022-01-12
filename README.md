@@ -21,6 +21,12 @@ Some components also have alignment, margin, padding, and animation properties a
 
 ## Quick start
 
+- Install from PyPI
+
+  ```
+  pip install wagtail-uikitblocks
+  ```
+
 - Add "uikitblocks" to your INSTALLED_APPS
     ```
     INSTALLED_APPS = [
