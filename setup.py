@@ -14,11 +14,11 @@ setup(
     version=__version__,
     url="https://github.com/kpsaurus/wagtail-uikitblocks/",
     author="Krishna Prasad K",
-    author_email="kp.pranavam@gmail.com",
+    author_email="contact@kprasad.dev",
     description="A collection of UIKit components that can be used as a Wagtail StreamField block.",
     long_description_content_type="text/markdown",
     long_description=long_description,
-    packages=find_packages(),
+    packages=find_packages(exclude=("test_uikitblocks",)),
     include_package_data=True,
     install_requires=["Django>=3.0", "wagtail>=2.0"],
     keywords=[

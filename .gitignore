@@ -4,5 +4,6 @@ build/*
 wagtail_uikitblocks.egg-info/*
 *.pyc
 .vscode
+.idea
 __pycache__
 *.DS_Store
