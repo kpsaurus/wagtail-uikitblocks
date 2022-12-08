@@ -48,13 +48,8 @@ class Choices:
         ("small", "Small Width Container"),
     )
 
-    GRID_CHILD_WIDTH_CHOICES = (
-        (1, "1 Item"),
-        (2, "2 Items"),
-        (3, "3 Items"),
-        (4, "4 Items"),
-        (5, "5 Items"),
-        (6, "6 Items"),
+    GRID_CHILD_WIDTH_CHOICES = tuple(
+        (i, f"{i} Item" + ("" if i == 1 else "s")) for i in range(1, 7)
     )
 
 
@@ -195,6 +190,37 @@ class ButtonBlock(blocks.StructBlock):
         template = "button.html"
 
 
+class AccordionItemBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=True)
+    description = blocks.TextBlock(required=False)
+    open_by_default = blocks.BooleanBlock(
+        required=False,
+        default=False,
+        help_text="If this accordion item needs to be opened initially, tick this.",
+    )
+
+
+class AccordionBlock(blocks.StructBlock):
+    accordion = blocks.ListBlock(
+        AccordionItemBlock(),
+        label="Accordion",
+    )
+    collapsible = blocks.BooleanBlock(
+        required=False,
+        default=True,
+        help_text="By default, all accordion items can be collapsed. To prevent this behavior and always maintain one open item",
+    )
+    multiple = blocks.BooleanBlock(
+        required=False,
+        default=False,
+        help_text="To display multiple content sections at the same time without one collapsing when the other one is opened, tick this",
+    )
+
+    class Meta:
+        template = "accordion.html"
+        icon = "list-ul"
+
+
 class MarginBlock(blocks.StreamBlock):
     margin_top = blocks.ChoiceBlock(
         choices=Choices.MARGIN_CHOICES, required=False, default="no"
@@ -234,7 +260,7 @@ class LinkBlock(blocks.StructBlock):
         desc = None
         image = None
 
-        # With the help of beautiful soup, scrap the url and check 
+        # With the help of beautiful soup, scrap the url and check
         # whether the link has any possible title, thumbnail or description.
         try:
             # Open the URL as Browser, not as python urllib
@@ -283,16 +309,17 @@ class LinkBlock(blocks.StructBlock):
 
 
 class UIKitBlocks(blocks.StreamBlock):
-    heading = HeadingBlock()
-    image = ImageBlock()
-    slideshow = SlideshowBlock()
-    slider = SliderBlock()
-    lightbox = Lightbox()
-    popup = PopupBlock(label="Popup Message")
-    switcher = SwitcherBlock(label="Switcher")
+    accordion = AccordionBlock()
     banner = BannerBlock(label="Banner")
     button = ButtonBlock()
+    heading = HeadingBlock()
+    image = ImageBlock()
+    lightbox = Lightbox()
     link = LinkBlock()
+    popup = PopupBlock(label="Popup Message")
+    slider = SliderBlock()
+    slideshow = SlideshowBlock()
+    switcher = SwitcherBlock(label="Switcher")
 
 
 class GridItemBlock(blocks.StructBlock):

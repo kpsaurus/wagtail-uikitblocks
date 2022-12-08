@@ -4,18 +4,19 @@ A collection of <a target="_blank" href="https://getuikit.com">UIKit</a> compone
 
 ### Available UIKit components
 
+- Accordion
+- Banner
+- Button
 - Container
 - Grid
 - Heading
 - Image
-- Slideshow
-- Slider
 - Lightbox
-- Modal Popup
-- Switcher
-- Banner
-- Button
 - Link
+- Modal Popup
+- Slider
+- Slideshow
+- Switcher
 
 Some components also have alignment, margin, padding, and animation properties as well.
 
