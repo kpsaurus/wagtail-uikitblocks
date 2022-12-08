@@ -1,0 +1,10 @@
+<ul class="uk-text-left" uk-accordion="multiple: {% if value.multiple %}true{% else %}false{% endif%}; collapsible: {% if value.collapsible %}true{% else %}false{% endif %}">
+    {% for item in value.accordion %}
+    <li {% if item.open_by_default %} class="uk-open" {% endif %}>
+        <a class="uk-accordion-title" href="#">{{item.title}}</a>
+        <div class="uk-accordion-content">
+            <p>{{item.description}}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
